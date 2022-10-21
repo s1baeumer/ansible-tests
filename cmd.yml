@@ -1,3 +1,4 @@
+tasks:
 - name: Check system information
   shell: "lsb_release -a"
   register: os_info
