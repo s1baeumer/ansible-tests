@@ -1,0 +1,8 @@
+- name: FirstTests
+  hosts: localhost
+  tasks: 
+    - name: Ping my hosts
+      ansible.builtin.ping:
+    - name: Print result
+      ansible.builtin.debug:
+        msg: hello world
