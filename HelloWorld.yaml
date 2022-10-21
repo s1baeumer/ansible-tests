@@ -1,9 +1,8 @@
 - name: FirstTests
   hosts: local
   tasks: 
-    - name: Ping my hosts
-      ansible.builtin.ping:
-    - name: Print result
-      ansible.builtin.debug:
-        msg: hello world
-    - include_tasks: cmd.yml
+ - name: Show all the hosts in the inventory
+  ansible.builtin.debug:
+    msg: "{{ item }}"
+  loop: "{{ groups['all'] }}"
+ - include_tasks: cmd.yml
