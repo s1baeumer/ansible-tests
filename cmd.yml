@@ -11,13 +11,13 @@
 
 - name: Install and upgrade pip3
   pip:
-    name: pip
+    name: pip3
     extra_args: --upgrade
     executable: pip3
 
 - name: Install and upgrade pip3 firewalld
   pip:
-    name: pip
+    name: pip3
     extra_args: install firewalld
     executable: pip3
 
