@@ -1,11 +1,6 @@
-- name: Shell module example
-  hosts: local
-  tasks:
-  
-  - name: Check system information
-    shell:
-    	"lsb_release -a"
-    register: os_info
-    
-  - debug:
-    	msg: "{{os_info.stdout_lines}}"
+- name: Check system information
+   shell:
+   	"lsb_release -a"
+   register: os_info
+- debug:
+  	msg: "{{os_info.stdout_lines}}"
