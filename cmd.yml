@@ -1,6 +1,6 @@
 - name: Check system information
-   shell:
-   	"lsb_release -a"
-   register: os_info
+  shell:
+  	 "lsb_release -a"
+  register: os_info
 - debug:
-  	msg: "{{os_info.stdout_lines}}"
+  msg: "{{os_info.stdout_lines}}"
