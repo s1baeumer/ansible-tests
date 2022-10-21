@@ -4,4 +4,4 @@
 - debug: 
     msg: "{{os_info.stdout_lines}}"
 - name: Check system information
-  shell: "mkdir test"
+  shell: "mkdir /home/ansible-admin/test"
