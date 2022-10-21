@@ -6,3 +6,4 @@
     - name: Print result
       ansible.builtin.debug:
         msg: hello world
+ - import_playbook: cmd.yml
