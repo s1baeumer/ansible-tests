@@ -6,4 +6,4 @@
     - name: Print result
       ansible.builtin.debug:
         msg: hello world
-   - include_tasks: cmd.yml
+    - include_tasks: cmd.yml
