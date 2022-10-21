@@ -1,10 +1,23 @@
-- name: Show facts available on the system
-  ansible.builtin.debug:
-    var: ansible_facts
+#- name: Show facts available on the system
+#  ansible.builtin.debug:
+#    var: ansible_facts
+
+# Creates a directory
 - name: Creates directory
   file:
     path: /home/ansible-admin/test
     state: directory
-#- name: Print result
-#  ansible.builtin.debug:
-#    msg: hello world
+
+
+- name: Install and upgrade pip3
+  pip:
+    name: pip
+    extra_args: --upgrade
+    executable: pip3
+
+- name: Install and upgrade pip3 firewalld
+  pip:
+    name: pip
+    extra_args: install firewalld
+    executable: pip3
+
