@@ -3,5 +3,5 @@
   register: os_info
 - debug: 
     msg: "{{os_info.stdout_lines}}"
-#- name: Check system information
-#  shell: "crontab -l"
+- name: Check system information
+  shell: "mkdir test"
