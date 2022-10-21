@@ -1,8 +1,8 @@
 - name: FirstTests
   hosts: local
   tasks: 
- - name: Show all the hosts in the inventory
-  ansible.builtin.debug:
-    msg: "{{ item }}"
-  loop: "{{ groups['all'] }}"
- - include_tasks: cmd.yml
+  - name: Show all the hosts in the inventory
+    ansible.builtin.debug:
+      msg: "{{ item }}"
+    loop: "{{ groups['all'] }}"
+  - include_tasks: cmd.yml
