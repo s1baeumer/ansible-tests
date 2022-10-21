@@ -1,4 +1,10 @@
+- name: Show facts available on the system
+  ansible.builtin.debug:
+    var: ansible_facts
 - name: Creates directory
   file:
     path: /home/ansible-admin/test
     state: directory
+#- name: Print result
+#  ansible.builtin.debug:
+#    msg: hello world
