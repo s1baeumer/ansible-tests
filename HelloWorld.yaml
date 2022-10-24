@@ -1,5 +1,7 @@
 - name: FirstTests
   hosts: local
+    role: 
+      - common
   tasks: 
   - name: Show all the hosts in the inventory
     ansible.builtin.debug:
