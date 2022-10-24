@@ -1,0 +1,38 @@
+
+- name: upgrade packages and reboot (if necessary)
+  hosts: webservers
+  serial: 1    # one host at a time
+  become: true # as root
+  any_errors_fatal: true
+  max_fail_percentage: 0
+  vars:        # used by nagios-downtime/undowntime tasks
+    icinga_server: monitoring.example.com
+
+  tasks:
+    # do an "apt-get update", to ensure latest package lists
+    - name: apt-get update
+      apt:
+        update-cache: yes
+      changed_when: 0
+
+    # get a list of packages that have updates
+    - name: get list of pending upgrades
+      command: apt-get --simulate dist-upgrade
+      args:
+        warn: false # don't warn us about apt having its own plugin
+      register: apt_simulate
+      changed_when: 0
+
+    # pick out list of pending updates from command output. This essentially
+    # takes the above output from "apt-get --simulate dist-upgrade", and
+    # pipes it through "cut -f2 -d' ' | sort"
+    - name: parse apt-get output to get list of changed packages
+      set_fact:
+        updates: '{{ apt_simulate.stdout_lines | select("match", "^Inst ") | list | splitpart(1, " ") | list | sort }}'
+      changed_when: 0
+
+    # tell user about packages being updated
+    - name: show pending updates
+      debug:
+        var: updates
+      when: updates.0 is defined
